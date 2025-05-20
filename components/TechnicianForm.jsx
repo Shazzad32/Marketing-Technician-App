@@ -107,13 +107,22 @@ const TechnicianForm = ({ defaultItem, isUpdate }) => {
           value={item.technician_phone}
           onChange={handleChange}
         />
-        <TextField
-          name="district"
-          value={item.district}
-          label="District"
-          type="text"
-          onChange={handleChange}
-        />
+        <FormControl fullWidth>
+          <InputLabel id="district-label">District</InputLabel>
+          <Select
+            labelId="district-label"
+            name="district"
+            value={item.district}
+            label="District"
+            onChange={handleChange}
+          >
+            {district.map((name) => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         <TextField
           name="address"
           value={item.address}
