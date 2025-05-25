@@ -3,52 +3,46 @@ import Link from "next/link";
 
 const TechnicianTable = ({ item }) => {
   return (
-    <div className="h-auto w-full lg:w-[100%] flex lg:flex-row lg:h-12 items-center">
-      <div className="hidden lg:w-[90%] lg:grid lg:grid-cols-[repeat(4,1fr)] lg:p-2">
-        <p className=" overflow-hidden text-ellipsis whitespace-nowrap">
-          {item?.technician_name}
-        </p>
-        <p className=" overflow-hidden text-ellipsis whitespace-nowrap">
-          {item?.technician_phone}
-        </p>
-        <p className=" overflow-hidden text-ellipsis whitespace-nowrap">
-          {item?.district}
-        </p>
-        <p className=" overflow-hidden text-ellipsis whitespace-nowrap">
-          {item?.address}
-        </p>
-      </div>
-      <div className="block lg:hidden w-full bg-white border-2 border-blue-300 justify-center items-center p-2 shadow-md rounded-md ">
-        <p>
-          <strong>
-            Name: <span className="text-red-700">{item?.technician_name}</span>
-          </strong>
-        </p>
-        <p>
-          <strong>Phone :</strong> {item?.technician_phone}
-        </p>
-
-        <p>
-          <strong>District :</strong> {item?.district}
-        </p>
-        <p>
-          <strong>Address :</strong> {item?.address}
-        </p>
-
-        <p className="flex float-right mt-[-150px] relative top-0">
+    <div className="w-full">
+      <div className="hidden lg:flex items-center justify-between px-4 py-2 border-b border-gray-200">
+        <div className="grid grid-cols-4 gap-4 w-[90%]">
+          <p className="truncate">{item?.technician_name}</p>
+          <p className="truncate">{item?.technician_phone}</p>
+          <p className="truncate">{item?.district}</p>
+          <p className="truncate">{item?.address}</p>
+        </div>
+        <div className="w-[10%] flex justify-center items-center">
           {item?._id && (
             <Link href={`/technician/${item._id}/update`}>
-              <FiEdit className="text-black" />
+              <FiEdit className="text-gray-700 hover:text-blue-500 cursor-pointer" />
             </Link>
           )}
-        </p>
+        </div>
       </div>
 
-      <div className="hidden w-[10%] h-full lg:flex justify-center items-center gap-8">
+      <div className="block lg:hidden bg-white border rounded-md shadow-sm p-4 mb-3">
+        <div className="mb-2 text-sm text-gray-700 space-y-1">
+          <p className="truncate">
+            <strong>Name:</strong>{" "}
+            <span className="text-blue-700">{item?.technician_name}</span>
+          </p>
+          <p className="truncate">
+            <strong>Phone:</strong> {item?.technician_phone}
+          </p>
+          <p className="truncate">
+            <strong>District:</strong> {item?.district}
+          </p>
+          <p className="truncate">
+            <strong>Address:</strong> {item?.address}
+          </p>
+        </div>
+
         {item?._id && (
-          <Link href={`/technician/${item._id}/update`}>
-            <FiEdit className="text-black" />
-          </Link>
+          <div className="flex justify-end">
+            <Link href={`/technician/${item._id}/update`}>
+              <FiEdit className="text-gray-700 hover:text-blue-500 cursor-pointer" />
+            </Link>
+          </div>
         )}
       </div>
     </div>
