@@ -33,9 +33,13 @@ const TechnicianInfo = ({ techncicianRes }) => {
               .includes(state.search.toLowerCase())
           );
 
+    const sortedData = [...filterInformation].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+
     setState((prev) => ({
       ...prev,
-      data: [...filterInformation],
+      data: sortedData,
     }));
   }, [state.search, techncicianRes]);
 

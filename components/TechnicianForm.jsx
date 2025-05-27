@@ -109,7 +109,7 @@ const TechnicianForm = ({ defaultItem, isUpdate }) => {
           <DatePicker
             label="Date"
             name="date"
-            type="date"
+            format="YYYY-MM-DD"
             value={
               item.date && dayjs(item.date).isValid() ? dayjs(item.date) : null
             }
@@ -121,6 +121,7 @@ const TechnicianForm = ({ defaultItem, isUpdate }) => {
             }}
           />
         </LocalizationProvider>
+
         <Textarea
           type="text"
           name="comments"

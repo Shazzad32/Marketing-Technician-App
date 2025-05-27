@@ -2,7 +2,7 @@ import { FiEdit } from "react-icons/fi";
 import Link from "next/link";
 
 const TechnicianTable = ({ item }) => {
-  const formatteDate = item?.date
+  const formattedDate = item?.date
     ? new Date(item.date).toLocaleDateString("en-GB").replace(/\//g, "-")
     : new Date().toLocaleDateString("en-GB").replace(/\//g, "-");
 
@@ -14,7 +14,7 @@ const TechnicianTable = ({ item }) => {
           <p className="truncate">{item?.technician_phone}</p>
           <p className="truncate">{item?.district}</p>
           <p className="truncate">{item?.address}</p>
-          <p className="truncate">{formatteDate}</p>
+          <p className="truncate">{formattedDate}</p>
           <p className="truncate">{item?.comments}</p>
         </div>
         <div className="w-[10%] flex justify-center items-center">
@@ -42,7 +42,7 @@ const TechnicianTable = ({ item }) => {
             <strong>Address:</strong> {item?.address}
           </p>
           <p className="truncate">
-            <strong>Date:</strong> {formatteDate}
+            <strong>Date:</strong> {formattedDate}
           </p>
           <p className="truncate">
             <strong>Date:</strong> {item?.comments}
