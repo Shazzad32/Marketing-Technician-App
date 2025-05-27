@@ -25,8 +25,7 @@ export default function HomePage() {
             <span className="text-orange-400">Sultan Tracker</span>
           </h2>
           <p className="text-gray-600 text-lg">
-            Manage technicians, track devices, and monitor installations across
-            all districts.
+            Manage technicians and monitor installations across all districts.
           </p>
           <Link
             href="/technician"

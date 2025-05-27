@@ -40,7 +40,7 @@ const TechnicianTable = ({ item }) => {
             <strong>Address:</strong> {item?.address}
           </p>
           <p className="truncate">
-            <strong>Address:</strong> {formatteDate}
+            <strong>Date:</strong> {formatteDate}
           </p>
         </div>
 
