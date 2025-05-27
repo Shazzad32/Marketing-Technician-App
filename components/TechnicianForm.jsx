@@ -15,6 +15,7 @@ import { district } from "@/data";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import Textarea from "@mui/joy/Textarea";
 
 const TechnicianForm = ({ defaultItem, isUpdate }) => {
   const router = useRouter();
@@ -22,27 +23,6 @@ const TechnicianForm = ({ defaultItem, isUpdate }) => {
   const [item, setItem] = useState({
     ...defaultItem,
   });
-
-  // const [errors, setErrors] = useState({
-  //   device_price: "",
-  // });
-
-  // const validateFields = () => {
-  //   let newErrors = {};
-
-  //   if (item.is_complete && item.install_purpose === "New_Install") {
-  //     const price = parseFloat(item.device_price);
-
-  //     if (!item.device_price) {
-  //       newErrors.device_price = "Price required";
-  //     } else if (isNaN(price) || price < 1500 || price > 8000) {
-  //       newErrors.device_price = "Device Price must be between 1500 and 8000";
-  //     }
-  //   }
-
-  //   setErrors(newErrors);
-  //   return Object.keys(newErrors).length === 0;
-  // };
 
   const saveDevice = async () => {
     const res = await fetch("/api/marketing-technician/", {
@@ -84,13 +64,6 @@ const TechnicianForm = ({ defaultItem, isUpdate }) => {
     }));
   };
 
-  // const handleSwitchChange = (name) => {
-  //   setItem((prevValue) => ({
-  //     ...prevValue,
-  //     [name]: !prevValue[name],
-  //   }));
-  // };
-
   return (
     <div className="w-full flex items-center justify-center p-4 lg:p-6 lg:w-[50%] lg:gap-2 flex-col">
       <div className="w-full h-[100%] lg:h-[90%] flex gap-2 flex-col">
@@ -99,9 +72,7 @@ const TechnicianForm = ({ defaultItem, isUpdate }) => {
           label="Technician Name"
           name="technician_name"
           value={item.technician_name}
-          // value={item.device_id || ""}
           onChange={handleChange}
-          // disabled={isUpdate}
         />
         <TextField
           type="text"
@@ -133,6 +104,7 @@ const TechnicianForm = ({ defaultItem, isUpdate }) => {
           type="text"
           onChange={handleChange}
         />
+
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             label="Date"
@@ -149,8 +121,17 @@ const TechnicianForm = ({ defaultItem, isUpdate }) => {
             }}
           />
         </LocalizationProvider>
+        <Textarea
+          type="text"
+          name="comments"
+          value={item.comments || ""}
+          onChange={handleChange}
+          label="Comments"
+          placeholder="Type Here..."
+          minRows={3}
+        />
       </div>
-      <div className="flex w-full justify-end gap-4">
+      <div className="flex w-full justify-end gap-4 mt-3">
         <Button variant="outlined">
           <Link href="/technician">Cancel</Link>
         </Button>

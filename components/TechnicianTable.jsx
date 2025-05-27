@@ -5,15 +5,17 @@ const TechnicianTable = ({ item }) => {
   const formatteDate = item?.date
     ? new Date(item.date).toLocaleDateString("en-GB").replace(/\//g, "-")
     : new Date().toLocaleDateString("en-GB").replace(/\//g, "-");
+
   return (
     <div className="w-full">
       <div className="hidden lg:flex items-center justify-between px-4 py-2 border-b border-gray-200">
-        <div className="grid grid-cols-5 gap-4 w-[90%]">
+        <div className="grid grid-cols-6 gap-4 w-[90%]">
           <p className="truncate">{item?.technician_name}</p>
           <p className="truncate">{item?.technician_phone}</p>
           <p className="truncate">{item?.district}</p>
           <p className="truncate">{item?.address}</p>
           <p className="truncate">{formatteDate}</p>
+          <p className="truncate">{item?.comments}</p>
         </div>
         <div className="w-[10%] flex justify-center items-center">
           {item?._id && (
@@ -41,6 +43,9 @@ const TechnicianTable = ({ item }) => {
           </p>
           <p className="truncate">
             <strong>Date:</strong> {formatteDate}
+          </p>
+          <p className="truncate">
+            <strong>Date:</strong> {item?.comments}
           </p>
         </div>
 
