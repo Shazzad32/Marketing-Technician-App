@@ -104,7 +104,7 @@ import Link from "next/link";
 import RetailTable from "@/components/TechnicianTable";
 import { FaPlusSquare } from "react-icons/fa";
 
-const headers = ["Name", "Phone", "District", "Location"];
+const headers = ["Name", "Phone", "District", "Location", "Date"];
 
 const TechnicianInfo = ({ techncicianRes }) => {
   const [state, setState] = useState({
@@ -160,7 +160,7 @@ const TechnicianInfo = ({ techncicianRes }) => {
 
       <div className="flex-1 w-full overflow-x-auto p-4">
         <div className="w-full max-w-full mx-auto bg-white rounded-md shadow-md overflow-hidden">
-          <div className="hidden lg:grid grid-cols-[repeat(4,1fr)_100px] bg-gray-700 text-white text-sm font-semibold uppercase px-4 py-2 sticky top-0 z-10">
+          <div className="hidden lg:grid grid-cols-[repeat(5,1fr)_100px] bg-gray-700 text-white text-sm font-semibold uppercase px-4 py-2 sticky top-0 z-10">
             {headers.map((header) => (
               <p key={header}>{header}</p>
             ))}

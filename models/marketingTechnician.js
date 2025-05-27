@@ -5,6 +5,7 @@ const marketingTechnicianSchema = new mongoose.Schema({
   technician_phone: { type: String },
   district: { type: String },
   address: { type: String },
+  date: { type: Date },
 });
 
 marketingTechnicianSchema.index({ technician_phone: 1 });

@@ -14,7 +14,7 @@ export const GET = async () => {
 
 export const POST = async (req) => {
   try {
-    const { technician_name, technician_phone, district, address } =
+    const { technician_name, technician_phone, district, address, date } =
       await req.json();
 
     await connectToDb();
@@ -24,6 +24,7 @@ export const POST = async (req) => {
       technician_phone,
       district,
       address,
+      date,
     });
 
     await newTechnician.save();

@@ -24,7 +24,7 @@ export const PUT = async (req, { params }) => {
   try {
     await connectToDb();
 
-    const { technician_name, technician_phone, address, district } =
+    const { technician_name, technician_phone, address, district, date } =
       await req.json();
 
     const technician = await marketingTechnician.findById(id);
@@ -37,6 +37,7 @@ export const PUT = async (req, { params }) => {
     technician.technician_phone = technician_phone;
     technician.district = district;
     technician.address = address;
+    technician.date = date;
 
     await technician.save();
 

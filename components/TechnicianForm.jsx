@@ -12,6 +12,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { district } from "@/data";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import dayjs from "dayjs";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 const TechnicianForm = ({ defaultItem, isUpdate }) => {
   const router = useRouter();
@@ -130,6 +133,22 @@ const TechnicianForm = ({ defaultItem, isUpdate }) => {
           type="text"
           onChange={handleChange}
         />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            label="Date"
+            name="date"
+            type="date"
+            value={
+              item.date && dayjs(item.date).isValid() ? dayjs(item.date) : null
+            }
+            onChange={(newValue) => {
+              setItem((prev) => ({
+                ...prev,
+                date: newValue ? dayjs(newValue).format("YYYY-MM-DD") : "",
+              }));
+            }}
+          />
+        </LocalizationProvider>
       </div>
       <div className="flex w-full justify-end gap-4">
         <Button variant="outlined">

@@ -7,6 +7,7 @@ const defaultItem = {
   technician_phone: "",
   district: "",
   address: "",
+  date: "",
 };
 
 const AddTechncian = async () => {
