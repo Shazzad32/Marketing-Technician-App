@@ -23,17 +23,16 @@ const TechnicianInfo = ({ techncicianRes }) => {
   };
 
   useEffect(() => {
-    const filterInformation =
-      state.search === ""
-        ? [...techncicianRes]
-        : techncicianRes.filter((x) =>
-            [x.technician_name, x.technician_phone, x.district, x.address]
-              .join(" ")
-              .toLowerCase()
-              .includes(state.search.toLowerCase())
-          );
+    const filteredData = state.search
+      ? techncicianRes.filter((x) =>
+          [x.technician_name, x.technician_phone, x.district, x.address]
+            .join(" ")
+            .toLowerCase()
+            .includes(state.search)
+        )
+      : techncicianRes;
 
-    const sortedData = [...filterInformation].sort(
+    const sortedData = [...filteredData].sort(
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
     );
 
@@ -51,19 +50,19 @@ const TechnicianInfo = ({ techncicianRes }) => {
         </h1>
         <div className="flex gap-4 items-center w-full lg:w-auto">
           <Link href="/technician/add">
-            <FaPlusSquare className="text-white h-7 w-7 cursor-pointer hover:text-green-400" />
+            <FaPlusSquare className="text-white h-9 w-9 cursor-pointer hover:text-green-400" />
           </Link>
           <input
             type="search"
             placeholder="Search..."
-            className="w-full lg:w-64 h-10 px-3 rounded-md bg-white text-sm text-gray-700 focus:outline-none shadow"
+            className="w-full lg:w-64 h-12 px-3 rounded-md bg-white text-sm text-gray-700 focus:outline-none shadow"
             value={state.search}
             onChange={handleSearch}
           />
         </div>
       </div>
 
-      <div className="flex-1 w-full overflow-x-auto p-4">
+      <div className="flex-1 w-full overflow-x-auto p-1">
         <div className="w-full max-w-full mx-auto bg-white rounded-md shadow-md overflow-hidden">
           <div className="hidden lg:grid grid-cols-[repeat(6,1fr)_100px] bg-gray-700 text-white text-sm font-semibold uppercase px-4 py-2 sticky top-0 z-10">
             {headers.map((header) => (
